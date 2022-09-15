@@ -1,0 +1,175 @@
+* {
+    /* para resetar o CSS padrão do navegador */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none; /* tirar os pontinhos da lista */
+}
+
+body {
+    background-image: url(./assets/bg.jpg);
+    background-position: top center;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-color: #121214;
+}
+
+body * {
+    font-family: 'Inter', sans-serif;
+    line-height: 160%;
+}
+
+header {
+    text-align: center;
+    margin-top: 32px;
+    height: 120px;
+}
+
+header div {
+    width: 120px;
+    margin: auto;
+    background-image: linear-gradient(90deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100% );
+    
+    border-radius: 50%;
+
+    display: flex; 
+    padding: 4px;
+
+    transition: transform .3s;
+     /* quando receber a transição transform (incluida na tag abaixo), vai durar 3 segundos - serve para deixar a transição mais suave */
+}
+
+header div:hover { /*quando passar o mouse em cima dessa div vai aplicar as propriedades inseridas dentro das chaves */
+    transform: scale(1.1) /*quando passar o mouse, a escala vai ser de 1.1 - imagem vai aumentar de tamanho x0,1*/
+
+}
+
+header div img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+
+main {
+    max-width: 580px;
+    width: 90%;
+    margin: 32px auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+section {
+    color: white;
+    background-image: linear-gradient(90deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100% );
+    padding-top: 4px;
+    border-radius: 10px;
+
+}
+
+section div{
+    background-color: #2A2634;
+    padding: 32px;
+    padding-top: 24px;
+    border-radius: 8px;
+}
+
+section h2 {
+    font-weight: 900;
+    font-size: 24px;
+    letter-spacing: -0.47px;
+}
+
+section p {
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: -0.18px;
+    color: #A1A1AA;
+}
+
+section ul {
+    display: flex;
+    flex-wrap: wrap; /* para quando colocar mais itens na lista, ficarem um abaixo do outro, respeitando o tamanho da caixa*/
+    gap: 16px;
+    margin-top: 24px;
+}
+
+section ul li {
+    transition: transform .3s;
+}
+
+section ul li:hover {
+    transform: scale(1.1);
+}
+
+.games-list img {
+    width: 90px;
+    height: 120px;
+    border-radius: 8px;
+}
+
+.channel-list img {
+    width: 70px;
+    border-radius: 50%; /*arredondar as bordas */
+    border: 1px solid #443E54;
+}
+
+
+/* animations 
+
+@keyframes da inicio a animação e o nome seguinte (fromtop) podemos escolher.
+
+*/
+
+header div {
+    animation: fromTop .6s .2s backwards; /* 2s de delay para começar a animação - backwards faz com que a imagem suma até que a animação comece */
+}
+
+main section {
+    animation: fromBottom .8s backwards;
+}
+
+/* para animar uma section por vez - o nth-child pode referenciar o numero de qualquer filho, neste caso temos 3 sections = 3 filhos */
+main section:nth-child(1) { 
+    animation-delay: 0;
+} 
+
+main section:nth-child(2) {
+    animation-delay: .2s;
+}
+
+main section:nth-child(3) {
+    animation-delay: .6s;
+}
+
+
+/* animação vem de cima para baixo: */
+@keyframes fromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-30px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) /*a animação vai terminar no ponto incial do item (onde estava antes de receber a animação), no eixo Y (vertical) */
+    }
+}
+
+
+/* animação vem de baixo para cima: */
+@keyframes fromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(30px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
